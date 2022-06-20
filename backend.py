@@ -96,7 +96,7 @@ def generate_js(result):
     """
 
     js_base = """
-    <script src="http://220.149.231.241/DesmosPic/modified.js"></script>
+    <script src="./modified.js"></script>
     <div id="calculator" style="width: 1980px, height: 1080px;"></div>
     <script type='text/javascript'>
     var elt = document.getElementById('calculator');
