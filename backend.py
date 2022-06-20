@@ -8,12 +8,30 @@ import cv2
 import json
 
 
-COLOUR = '#2464b4' # Hex value of colour for graph output
 
+"""
+The original code that converts the image into graphs were developed by
+https://github.com/kevinjycui/DesmosBezierRenderer
+Special thanks to kevinjycui for the original code.
+
+This code uses following functions from the original DesmosBezierRenderer
+- get_trace
+- get_latex
+- get_contours
+
+This code added some features so that it is possible to run a API that turns
+given image by POST request into a series of graphs.
+Please check https://github.com/gooday2die/DesmosPic for more information
+"""
+
+
+
+COLOUR = '#2464b4' # Hex value of colour for graph output
 BILATERAL_FILTER = False # Reduce number of lines with bilateral filter
-DOWNLOAD_IMAGES = False # Download each rendered frame automatically (works best in firefox)
 USE_L2_GRADIENT = False # Creates less edges but is still accurate (leads to faster renders)
-SHOW_GRID = True # Show the grid in the background while rendering
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+app = Flask(__name__)
 
 def get_trace(data):
     for i in range(len(data)):
@@ -63,6 +81,20 @@ def get_contours(image, nudge = .33):
 
 
 def generate_js(result):
+    """
+    A function that generates html code that has javascript code that represents
+    the function using Desmos API.
+
+    While trying to fit Desmos graph into our website, there was a wierd bug.
+    This was fixed via modifying the original calculator.js.
+    The modified calculator.js is stored and hosted in local machine and was
+    named as modified.js
+
+    :param results: a list that has all the latex expressions of the picture.
+    :return: returns a string object that represnts all javascript expressions
+             for visualizing Desmos graph
+    """
+
     js_base = """
     <script src="http://220.149.231.241/DesmosPic/modified.js"></script>
     <div id="calculator" style="width: 1980px, height: 1080px;"></div>
@@ -71,26 +103,31 @@ def generate_js(result):
     var calculator = Desmos.GraphingCalculator(elt);
     """
 
-    js_end = """
-    </script>
-    """
+    js_end = "</script>"
 
     set_exprs = list()
     expr_count = 0
-    color = '#2464b4'
     for i in result:
-        cur_expr =  "calculator.setExpression({ id: 'expr-" + str(expr_count) + "\', latex: \'" + i + "\', color: \'" + color + "\'});\n"
+        cur_expr =  "calculator.setExpression({ id: 'expr-" + str(expr_count) +\
+            "\', latex: \'" + i + "\', color: \'" + COLOUR + "\'});\n"
         expr_count += 1
         set_exprs.append(cur_expr)
-
     js_result = js_base
+
     for i in set_exprs:
         js_result += i.replace(" ", "")
     js_result += js_end
-    print(js_result)
+
     return js_result
 
 def generate_function_text(result):
+    """
+    A function that generates a textarea HTML that includes all functions.
+
+    :param results: a list that has all the latex expressions of the picture.
+    :return: returns a string object that represnts HTML code of textarea.
+    """
+
     text_base = "<textarea class=\"form-control\" id=\"message\" name=\"message\" rows=\"7\">"
 
     text_end = "</textarea>"
@@ -102,22 +139,28 @@ def generate_function_text(result):
     text_result += text_end
     return text_result
 
-
-
-UPLOAD_FOLDER = './uploads'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
 def allowed_file(filename):
+    """
+    A function that figures out if this file is allowed file extension
+    :param filename: the string object that represents file's name
+    :return: returns valid or not
+    """
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/pic', methods=['GET', 'POST'])
 def pic():
-    if request.method == 'POST':
+    """
+    A function that is for pic route.
+    This member function will take care of POST requests using images.
+    When the image was valid and could be processed, it will return a
+    json object that is in following format.
+
+    {'js_result': "string that has all javascript codes",
+    'text_results': "string that has all HTML codes for textarea"}
+    """
+
+    if request.method == 'POST':  # if this was POST request,
         try:
             img = cv2.imdecode(np.frombuffer(request.files['image'].read(), np.uint8), cv2.IMREAD_UNCHANGED)
             result = get_latex(img)
@@ -128,8 +171,8 @@ def pic():
             json_result = json.dumps(total_data)
 
             return Response(json_result, status=200)
-        except KeyError:
-            return Response("[Error] File is invalid", status=400)
+        except:  # if the POST request was invalid
+            return Response("[Error] File is invalid or cannot process file. Please submit an issue", status=400)
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
