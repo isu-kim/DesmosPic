@@ -73,25 +73,28 @@ img {
 				echo "<div class=\"alert alert-danger\" role=\"alert\"> Image must be .png, .jpg, .jpeg less than 2MB!</div>";
         		}
     		}
-		echo "\r\n";
-		$params = json_encode(array("file"=> $file));
 
-
-		$curl = curl_init($url);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_POST, true);
-		curl_setopt($curl, CURLOPT_POSTFIELDS,  json_encode($params));
-		curl_setopt($curl, CURLOPT_HTTPHEADER, [
-   		'Content-Type: application/json'
-		]);
-		$response = curl_exec($curl);
-
-		$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-		#echo $http_code;
+if (function_exists('curl_file_create')) { 
+                        $cFile = curl_file_create($_FILES['image']['tmp_name']);
+                      } else {
+                        $cFile = '@' . realpath($_FILES['image']['tmp_name']);
+                    }
+                    $post = array('image'=> $cFile);
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL,"http://220.149.231.241:5001/pic");
+                    curl_setopt($ch, CURLOPT_POST,1);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                    $response=curl_exec ($ch);
+		    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close ($ch);
 		
 		if ($http_code == 200){
-			echo "<div class=\"alert alert-success\" role=\"alert\">".$response."</div>";
+			$json_result = var_dump(json_decode($response));
+			echo "<div class=\"alert alert-success\" role=\"alert\">Success!</div>";
+			$js_result = $json_result["js_result"];
+			$text_result = $json_result["text_result"];
+			echo $text_result;	
 		}
 		else{
 			echo "<div class=\"alert alert-danger\" role=\"alert\">".$response."</div>";
@@ -142,4 +145,15 @@ img {
   		</div>
 	</div>
 </form>
+
+<textarea class="form-control" id="message" name="message"  rows="5">ssiadwdhweife
+erfq
+erg
+qer
+gqe
+rg
+qer
+gqe
+rg
+</textarea>
 
