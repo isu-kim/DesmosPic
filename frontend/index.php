@@ -123,7 +123,18 @@
   					<label for="formFile" class="form-label" style="font-size: 30px">Upload Picture</label>
 					<ul class="list-unstyled">
 						<ul>
+
+							<?php
+								$directory = "/var/www/Gooday2die/DesmosPics/saves/";
+								$filecount = 0;
+								$files = glob($directory . "*");
+								if ($files){
+									 $filecount = count($files);
+								}
+								echo "<li>Converted <b>" . $filecount . "</b> pictures to graph till now!</li>";
+							?>
 							<li>Uploaded image will <b>NOT</b> be saved in the server</li>
+							<li>Converted graph will be saved in the server (will have gallery in the future!)</li>
 							<li>Please check <a href="https://github.com/gooday2die/DesmosPic">my github</a> for more information</li>
 							<li>Please do not try any malicious actions on my server</li>
 							<li>If you found bug, please make report issue to <a href="https://github.com/gooday2die/DesmosPic">my github</a></li> 
