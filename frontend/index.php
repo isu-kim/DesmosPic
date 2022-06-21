@@ -1,179 +1,258 @@
-<!DOCTYPE html>
-<!-- A frontend page for DesmosPic
-     Not much going on except HTTP POST and GET
-     I really do not know how to do HTML and PHP, so the code might be wierd.
-     Visit https://github.com/gooday2die/DesmosPic for more information -->
 
-<style>
-	#maincontent{
-		margin:16px;
-		justify-content:center;
-	}
-	#centerer{
-		max-width:1500px;
-		margin:auto;
-	}
-	img {
-   		max-width:100%;
-   		height:auto;
-   	max-height:100%;
-	}
-</style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!--
+    Modified from the Debian original for Ubuntu
+    Last updated: 2022-02-06
+    Please don't do dumb shit with this website. It is just one index.html
+  -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Gooday2die.net</title>
+    <style type="text/css" media="screen">
+  * {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+  }
+
+  body, html {
+    padding: 3px 3px 3px 3px;
+
+    background-color: #D8DBE2;
+
+    font-family: Verdana, sans-serif;
+    font-size: 11pt;
+    text-align: center;
+  }
+
+  div.main_page {
+    position: relative;
+    display: table;
+
+    width: 800px;
+
+    margin-bottom: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 0px 0px 0px;
+
+    border-width: 2px;
+    border-color: #212738;
+    border-style: solid;
+
+    background-color: #FFFFFF;
+
+    text-align: center;
+  }
+
+  div.page_header {
+    height: 99px;
+    width: 100%;
+
+    background-color: #F5F6F7;
+  }
+
+  div.page_header span {
+    margin: 15px 0px 0px 50px;
+
+    font-size: 180%;
+    font-weight: bold;
+  }
+
+  div.page_header img {
+    margin: 3px 0px 0px 40px;
+
+    border: 0px 0px 0px;
+  }
+
+  div.table_of_contents {
+    clear: left;
+
+    min-width: 200px;
+
+    margin: 3px 3px 3px 3px;
+
+    background-color: #FFFFFF;
+
+    text-align: left;
+  }
+
+  div.table_of_contents_item {
+    clear: left;
+
+    width: 100%;
+
+    margin: 4px 0px 0px 0px;
+
+    background-color: #FFFFFF;
+
+    color: #000000;
+    text-align: left;
+  }
+
+  div.table_of_contents_item a {
+    margin: 6px 0px 0px 6px;
+  }
+
+  div.content_section {
+    margin: 3px 3px 3px 3px;
+
+    background-color: #FFFFFF;
+
+    text-align: left;
+  }
+
+  div.content_section_text {
+    padding: 4px 8px 4px 8px;
+
+    color: #000000;
+    font-size: 100%;
+  }
+
+  div.content_section_text pre {
+    margin: 8px 0px 8px 0px;
+    padding: 8px 8px 8px 8px;
+
+    border-width: 1px;
+    border-style: dotted;
+    border-color: #000000;
+
+    background-color: #F5F6F7;
+
+    font-style: italic;
+  }
+
+  div.content_section_text p {
+    margin-bottom: 6px;
+  }
+
+  div.content_section_text ul, div.content_section_text li {
+    padding: 4px 8px 4px 16px;
+  }
+
+  div.section_header {
+    padding: 3px 6px 3px 6px;
+
+    background-color: #8E9CB2;
+
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 112%;
+    text-align: center;
+  }
+
+  div.section_header_red {
+    background-color: #CD214F;
+  }
+
+  div.section_header_grey {
+    background-color: #9F9386;
+  }
+
+  .floating_element {
+    position: relative;
+    float: left;
+  }
+
+  div.table_of_contents_item a,
+  div.content_section_text a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  div.table_of_contents_item a:link,
+  div.table_of_contents_item a:visited,
+  div.table_of_contents_item a:active {
+    color: #000000;
+  }
+
+  div.table_of_contents_item a:hover {
+    background-color: #000000;
+
+    color: #FFFFFF;
+  }
+
+  div.content_section_text a:link,
+  div.content_section_text a:visited,
+   div.content_section_text a:active {
+    background-color: #DCDFE6;
+
+    color: #000000;
+  }
+
+  div.content_section_text a:hover {
+    background-color: #000000;
+
+    color: #DCDFE6;
+  }
+
+  div.validator {
+  }
+    </style>
+  </head>
+  <body>
+    <div class="main_page">
+      <div class="page_header floating_element">
+	      <!--<img src="/icons/ubuntu-logo.png" alt="Ubuntu Logo" class="floating_element"/> !-->
+        <img src="logo.png" width="100" height="100"alt="Yup, it's intended to be broken. I got no logo image" class="floating_element"/>
+        <span class="floating_element">
+		Apache2 Ubuntu Default Page<br> Gooday2die.net
+        </span>
+      </div>
+      <div class="content_section floating_element">
+        <div class="section_header section_header_red">
+          <div id="about"></div>
+          I cannot HTML and CSS :b
+        </div>
+        <div class="content_section_text">
+          <p>
+	  <h1>Welcome to Gooday2die.net</h1>
+	  <h2>My bad for terriable webpage</h2>
+		Hello, welcome to <b>Gooday2die.net</b>. I have no idea on how you ended up here, but greetings from me! 
+		<br>
+	  I do <b>NOT</b> know how to HTML or CSS (I can start learning but really not much of a fan of webpages), so I am using the default Apache2 Default Page's CSS and HTMLs for this web page.<br><br>
+	  If you would like to find out my personal Open Source Projects, please visit <a href="https://github.com/gooday2die">Github</a><br><br><center><b><p style="color:#CD214F"> Please do not try malicious operations here. <br>It's just one html page without any backend attached to it.</p></b></center><br>
+
+	  <h2 id="about-me">About Me</h1>
+<h3 id="-thumbsup-preferences-interests">Preferences &amp; Interests</h2>
+<h4 id="relatively-confident-languages-">Favorite Languages:</h3>
+<br>
+<p><img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&amp;logo=python&amp;logoColor=darkgreen" alt="enter image description here"> <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&amp;logo=c&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&amp;logo=c%2b%2b&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&amp;logo=java&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Scratch-4D97FF?style=for-the-badge&amp;logo=Scratch&amp;logoColor=white" alt="enter image description here"></p>
+<br><h4 id="interests">Interests</h3>
+<ul>
+<li>Low-Level Operations</li>
+<li>Algorithms (Old-Fashioned Algorithms)</li>
+<li>Making projects for myself</li>
+<li>Minecraft Server Development</li>
+<li>Break things while developing</li>
+</ul>
+<br>
+<h2 id="-page_facing_up-environment">Environment</h2>
+<br>
+<h4 id="os">OS</h3>
+<br><p><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&amp;logo=windows&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&amp;logo=linux&amp;logoColor=black" alt="enter image description here"> <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&amp;logo=ios&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&amp;logo=ubuntu&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/OpenWrt-00B5E2?style=for-the-badge&amp;logo=OpenWrt&amp;logoColor=white" alt="enter image description here"></p>
+<br><h4 id="ide-text-editor">IDE | Text Editor</h3>
+<br><p><img src="https://img.shields.io/badge/VIM-%2311AB00.svg?&amp;style=for-the-badge&amp;logo=vim&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&amp;logo=visual%20studio&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&amp;logo=intellij-idea&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Notepad++-90E59A.svg?style=for-the-badge&amp;logo=notepad%2b%2b&amp;logoColor=black" alt="enter image description here"> <img src="https://img.shields.io/badge/PyCharm-000000.svg?&amp;style=for-the-badge&amp;logo=PyCharm&amp;logoColor=white" alt="enter image description here"> <img src="https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&amp;logo=Xcode&amp;logoColor=white" alt="enter image description here"></p>
+<h2 id="-e-mail-contacts">Contacts</h2>
+<p>POC : edina00@naver.com</p>
+<br>
+<h2 id="-e-mail-contacts">Projects</h2>
+<li>PyPeripheral : <a href="https://github.com/gooday2die/PyPeripheral">https://github.com/gooday2die/PyPeripheral</a></li>
+<li>AllPeripherals : <a href="https://github.com/gooday2die/AllPeripherals">https://github.com/gooday2die/AllPeripherals</a></li>
+<li>pyrgbdev : <a href="https://github.com/gooday2die/pyrgbdevl">https://github.com/gooday2die/pyrgbdev</a></li>
+<li>MIPSim : <a href="https://github.com/gooday2die/MIPSim">https://github.com/gooday2die/mipsim</a></li>
+<li>Minecraft Torch Server : <a href="https://github.com/gooday2die/TorchPlugin">Nope, This is private repository!</a></li>
+<li>For More : <a href="https://github.com/gooday2die/">Check Github for more Info</a></li>
 
 
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta charset="utf-8">
-		<title>Desmos Picture Graph Generator</title>
-
-	</head>
-	<body>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-		<div id="maincontent">
-			<div id="centerer">
-				<nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #e3f2fd;">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">Picture to Desmos Graph</a>
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      							<span class="navbar-toggler-icon"></span>
-    						</button>
-  					</div>
-				</nav>
-			&nbsp
-
-			<h1 id="minecraft-cultureland-plugin">Picture to Desmos Graph</h1>
-			<h3 id="-">Convert your picture to Desmos graph!</h3>
-			<img class="intro" src="./intro.png">
-
-			<?php
-				function post_data(){
-					/// A function for posting image data into the API server
-					$url = "http://127.0.0.1:5001/pic";
-					$file = $_FILES['image'];
-					$allowedExts = array("jpeg", "jpg", "png");
-
-					$error = $file["error"];
-    					$name = $file["name"];
-    					$type = $file["type"];
-    					$size = $file["size"];
-    					$tmp_name = $file["tmp_name"];
-   
-					if ( $error > 0 ) { // check errors
-        					echo "Error: " . $error . "<br>";
-    					}
-    					else { // if it was okay, check file format and size
-        					$temp = explode(".", $name);
-        					$extension = end($temp);
-      				 
-						if (!((($size/1024/1024) < 2.) && in_array($extension, $allowedExts))) {
-							// if file format is not jpeg, jpg, png or was more than 2MB, print out warning.
-							echo "<div class=\"alert alert-danger\" role=\"alert\"> Image must be .png, .jpg, .jpeg less than 2MB!</div>";
-        					}
-    					}
-
-					if (function_exists('curl_file_create')) {  // load image file into variables.
-                        			$cFile = curl_file_create($_FILES['image']['tmp_name']);
-                      			} else {
-                        			$cFile = '@' . realpath($_FILES['image']['tmp_name']);
-					}
-
-                    			$post = array('image'=> $cFile); // prepare post data
-					$ch = curl_init(); // do curl init
-
-                    			curl_setopt($ch, CURLOPT_URL,"http://127.0.0.1:5001/pic");
-                    			curl_setopt($ch, CURLOPT_POST,1);
-                    			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                    			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-					
-					$response = curl_exec($ch); // execute post query
-		    			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // get response code
-                    			curl_close ($ch); // close curl
-		
-					if ($http_code == 200){ // if valid response
-						$json_result = json_decode($response, true); // decode json
-
-						echo "<div class=\"alert alert-success\" role=\"alert\">Success! Please wait...</div>\n";
-						// print graph and functions
-						// I know this is dumb but the json itself is a html code that represents each respective elements :b
-						
-						$js_result = $json_result["js_result"];
-						echo "<h4> Graph preview (might take some time to load) </h4>\n";
-						echo $js_result;
-						echo "<h4> Copy and paste following functions to Desmos.com </h4>\n";
-						$text_result = $json_result["text_result"];
-						echo $text_result;	
-					}
-					else{ // if invalid response
-						echo "<div class=\"alert alert-danger\" role=\"alert\">".$response."</div>";
-					}
-				}
-			?>
-
-			<?php
-				if(isset($_POST['submit'])){
-					// check submit button was set
-					post_data();
-				}
-			?>
-
-			<form action="" method="post" enctype="multipart/form-data">
-				<div class="row g-3">
-  					<label for="formFile" class="form-label" style="font-size: 30px">Upload Picture</label>
-					<ul class="list-unstyled">
-						<ul>
-
-							<?php
-								$directory = "/var/www/Gooday2die/DesmosPics/saves/";
-								$filecount = 0;
-								$files = glob($directory . "*");
-								if ($files){
-									 $filecount = count($files);
-								}
-								echo "<li>Converted <b>" . $filecount . "</b> pictures to graph till now!</li>";
-							?>
-							<li>Uploaded image will <b>NOT</b> be saved in the server</li>
-							<li>Converted graph will be saved in the server (will have gallery in the future!)</li>
-							<li>Please check <a href="https://github.com/gooday2die/DesmosPic">my github</a> for more information</li>
-							<li>Please do not try any malicious actions on my server</li>
-							<li>If you found bug, please make report issue to <a href="https://github.com/gooday2die/DesmosPic">my github</a></li> 
-						</ul>
-					</ul>
-					<?php
-						$host = '127.0.0.1'; // check connection to server. 
-						$port = 5001; 
-						$waitTimeoutInSeconds = 1; 
-						if($fp = fsockopen($host,$port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-							// if api is working, then enable submit button
-							echo "<div class=\"alert alert-success\" role=\"alert\">API Server is alive!</div>";
-						} else {
-							// if api is not working, then disable submit button
-							echo "<div class=\"alert alert-danger\" role=\"alert\">API Server is down... Visit later</div>";
-						} 
-						fclose($fp);
-					?>
-  					<div class="col-auto">
-         					<input class="form-control" type="file" name="image" />
-  					</div>
-  					<div class="col-auto">
-						<?php
-							$host = '127.0.0.1'; // check connection to server. 
-							$port = 5001; 
-							$waitTimeoutInSeconds = 1; 
-							if($fp = fsockopen($host,$port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-								// if api is working, then enable submit button
-								echo "<button type=\"submit\" name=submit value=submit class=\"btn btn-primary mb-3\">Convert!</button>";
-							} else {
-								// if api is not working, then disable submit button
-								echo "<button type=\"submit\" name=submit value=submit class=\"btn btn-primary mb-3\" disabled=\"disabled\">Convert!</button>";
-							} 
-							fclose($fp);
-						?>
-  					</div>
-				</div>
-			</form>
-		</div>
-	</body>
-	<center><p>&copy; 2022 Gooday2die</p></center>
-</html>
+<br>
+<br>
+<div class="copyright" align="center">
+  <script>
+    document.write('&copy;' );
+    document.write(' 2022 - ');
+    document.write(new Date().getFullYear());
+    document.write(' gooday2die.net - All Rights Reserved.');
+    document.write('<br/>Last Updated : ');
+    document.write(document.lastModified);
+  </script>
