@@ -66,45 +66,56 @@
 							// if file format is not jpeg, jpg, png or was more than 2MB, print out warning.
 							echo "<div class=\"alert alert-danger\" role=\"alert\"> Image must be .png, .jpg, .jpeg less than 2MB!</div>";}
 						else{
-							if (function_exists('curl_file_create')) {  // load image file into variables.
-                        					$cFile = curl_file_create($_FILES['image']['tmp_name']);
-                      					} else {
-                        					$cFile = '@' . realpath($_FILES['image']['tmp_name']);
-							}
-
-                    					$post = array('image'=> $cFile); // prepare post data
-							$ch = curl_init(); // do curl init
-
-                    					curl_setopt($ch, CURLOPT_URL,"http://127.0.0.1:5001/pic");
-                    					curl_setopt($ch, CURLOPT_POST,1);
-                    					curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                    					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-					
-							$response = curl_exec($ch); // execute post query
-		    					$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // get response code
-                    					curl_close ($ch); // close curl
-		
-							if ($http_code == 200){ // if valid response
-								$json_result = json_decode($response, true); // decode json
-
-								echo "<div class=\"alert alert-success\" role=\"alert\">Success! Please wait...</div>\n";
-								// print graph and functions
-								// I know this is dumb but the json itself is a html code that represents each respective elements :b
-								if (isset($_POST['graphview'])){	
-									// if printing out the graph was checked
-									$js_result = $json_result["js_result"];
-									echo "<h4> Graph preview (might take some time to load) </h4>\n";
-									echo $js_result;
-								}
-								echo "<h4> Copy and paste following functions to Desmos.com </h4>\n";
-								$text_result = $json_result["text_result"];
-								echo $text_result;	
-							}
-							else{ // if invalid response
-								if (strlen($response) != 0)
-									echo "<div class=\"alert alert-danger\" role=\"alert\">".$response."</div>";
-							}
+			/**		if ( $error > 0 ) { // check errors
+							echo "<div class=\"alert alert-danger\" role=\"alert\"> Image must be .png, .jpg, .jpeg less than 2MB!</div>";
+    					}
+    					else { // if it was okay, check file format and size
+        					$temp = explode(".", $name);
+        					$extension = end($temp);
+      				 
+						if (!((($size/1024/1024) < 2.) && in_array($extension, $allowedExts))) {
+							// if file format is not jpeg, jpg, png or was more than 2MB, print out warning.
+							echo "<div class=\"alert alert-danger\" role=\"alert\"> Image must be .png, .jpg, .jpeg less than 2MB!</div>";
+        					}
+    					}
+			 */
+					if (function_exists('curl_file_create')) {  // load image file into variables.
+                        			$cFile = curl_file_create($_FILES['image']['tmp_name']);
+                      			} else {
+                        			$cFile = '@' . realpath($_FILES['image']['tmp_name']);
 					}
+
+                    			$post = array('image'=> $cFile); // prepare post data
+					$ch = curl_init(); // do curl init
+
+                    			curl_setopt($ch, CURLOPT_URL,"http://127.0.0.1:5001/pic");
+                    			curl_setopt($ch, CURLOPT_POST,1);
+                    			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                    			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+					
+					$response = curl_exec($ch); // execute post query
+		    			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // get response code
+                    			curl_close ($ch); // close curl
+		
+					if ($http_code == 200){ // if valid response
+						$json_result = json_decode($response, true); // decode json
+
+						echo "<div class=\"alert alert-success\" role=\"alert\">Success! Please wait...</div>\n";
+						// print graph and functions
+						// I know this is dumb but the json itself is a html code that represents each respective elements :b
+						if (isset($_POST['graphview'])){	
+						$js_result = $json_result["js_result"];
+						echo "<h4> Graph preview (might take some time to load) </h4>\n";
+						echo $js_result;}
+						echo "<h4> Copy and paste following functions to Desmos.com </h4>\n";
+						$text_result = $json_result["text_result"];
+						echo $text_result;	
+					}
+					else{ // if invalid response
+						if (strlen($response) != 0)
+						echo "<div class=\"alert alert-danger\" role=\"alert\">".$response."</div>";
+					}
+				}
 				}
 			?>
 
