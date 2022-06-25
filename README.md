@@ -1,3 +1,4 @@
+
 # DesmosPics
 Turn your picture into Desmos graphs.
 
@@ -18,8 +19,9 @@ Please check https://gooday2die.net/DesmosPics for live demo!
 
 ## Installation
 1. Simply put  `/frontend` directory into your Apache directory
-2. Install all requirements in `requirements.txt`
-3. `python3 backend.py`
+2. `sudo apt install git python3-dev python3-pip build-essential libagg-dev libpotrace-dev pkg-config`
+3. Install all requirements in `requirements.txt`
+4. `python3 backend.py`
 
 ## Limits
 - When the picture needs many functions to be represented, Desmos API needs very much time to render graphs.
