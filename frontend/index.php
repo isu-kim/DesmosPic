@@ -43,7 +43,7 @@
 				</nav>
 			&nbsp
 
-			<h1 id="minecraft-cultureland-plugin">Picture to Desmos Graph</h1>
+			<h1 id="DesmosPic">Picture to Desmos Graph</h1>
 			<h3 id="-">Convert your picture to Desmos graph!</h3>
 			<img class="intro" src="./intro.png">
 
@@ -133,7 +133,7 @@
 						<ul>
 
 							<?php
-								$directory = "/var/www/Gooday2die/DesmosPics/saves/";
+								$directory = "PATH_TO_SAVES";
 								$filecount = 0;
 								$files = glob($directory . "*");
 								if ($files){
