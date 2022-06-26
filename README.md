@@ -11,7 +11,7 @@ This is a website (or API at the same time) that turns your picture into Desmos 
 
 ![enter image description here](https://raw.githubusercontent.com/gooday2die/DesmosPic/main/frontend/intro.png)
 
-Please check https://gooday2die.net/DesmosPics for live demo!
+Please check https://gooday2die.net/DesmosPics or http://us.gooday2die.net/DesmosPics for live demo!
 
 ## Includes...
 - `backend.py` : A Python script that includes all codes for API. 
@@ -20,11 +20,15 @@ Please check https://gooday2die.net/DesmosPics for live demo!
 ## Installation
 1. Simply put  `/frontend` directory into your Apache directory
 2. `sudo apt install git python3-dev python3-pip build-essential libagg-dev libpotrace-dev pkg-config`
-3. Install all requirements in `requirements.txt`
-4. `python3 backend.py`
+3. If you do not have PHP and CURL PHP not installed in your system, install them.
+4. Install all requirements in `requirements.txt` by `pip install -r requirements.txt`
+5. Edit graph saving location using at following files
+- 1. `backend.py` at line 155. 
+- 2. `index.php` at line 136
+6. `python3 backend.py`
 
 ## Limits
-- When the picture needs many functions to be represented, Desmos API needs very much time to render graphs.
+- When the picture needs many functions to be rendered, Desmos API needs very much time to render graphs.
 
 ## API
 By `python3 backend.py` there will be an API server running in port `5001`. The API has following services.
@@ -45,6 +49,9 @@ If the API server was able to process the image, it will return following `json`
 	"text_result": "string object that represents latex expression that represents all functions needed for representing the image"
 }
 ```
+
+## More info
+- `./frontend/modified.js` was a modified version of official Desmos API. Since there was abit of minor bug from the original API which can be found [here](https://www.desmos.com/api/v1.7/docs/index.html?lang=ko), I had to modify a bit of code in order for the frontend script to work.
 
 
 ## PRs and Issues
