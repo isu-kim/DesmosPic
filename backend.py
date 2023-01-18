@@ -148,15 +148,6 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def save_file(js_result):
-    """
-    """
-    uuid_name = str(uuid.uuid4())
-    f = open("/var/www/Gooday2die/DesmosPics/saves/" + uuid_name + ".html", "w+")
-    f.write(js_result)
-    f.close()
-    return
-
 @app.route('/pic', methods=['GET', 'POST'])
 def pic():
     """
@@ -178,7 +169,6 @@ def pic():
 
             total_data = {"js_result": js_result, "text_result": text_result}
             json_result = json.dumps(total_data)
-            save_file(js_result)
 
             return Response(json_result, status=200)
         except:  # if the POST request was invalid
