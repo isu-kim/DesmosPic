@@ -131,21 +131,9 @@
   					<label for="formFile" class="form-label" style="font-size: 30px">Upload Picture</label>
 					<ul class="list-unstyled">
 						<ul>
-
-							<?php
-								$directory = "PATH_TO_SAVES";
-								$filecount = 0;
-								$files = glob($directory . "*");
-								if ($files){
-									 $filecount = count($files);
-								}
-								echo "<li>Converted <b>" . $filecount . "</b> pictures to graph till now!</li>";
-							?>
-							<li>Uploaded image will <b>NOT</b> be saved in the server</li>
-							<li>Converted graph will be saved in the server (will have gallery in the future!)</li>
-							<li>Please check <a href="https://github.com/gooday2die/DesmosPic">my github</a> for more information</li>
+							<li>Please check <a href="https://github.com/isu-kim/DesmosPic">my github</a> for more information</li>
 							<li>Please do not try any malicious actions on my server</li>
-							<li>If you found bug, please make report issue to <a href="https://github.com/gooday2die/DesmosPic">my github</a></li> 
+							<li>If you found bug, please make report issue to <a href="https://github.com/isu-kim/DesmosPic">my github</a></li> 
 							<li>Huge and special thanks to <a href="https://github.com/kevinjycui">kevincjcui</a></li>
 							<li>Due to slow Desmos API's graph drawing speed, big pictures might take more time to be visualized</li>
 						</ul>
@@ -189,8 +177,6 @@
 			</form>
 		</div>
 	</body>
-	<center><p>&copy; 2022 Gooday2die</p></center>
- 	<center><a href='https://www.symptoma.it/'>Symptoma</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=1053dc040d141923f374e8cbf9acd51c5f01aa51'></script>
-		<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/950093/t/2"></script></center>
+	<center><p>&copy; 2022 Isu Kim</p></center>
 </html>
 
