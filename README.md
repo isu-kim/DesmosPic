@@ -1,5 +1,5 @@
 
-# DesmosPics
+# DesmosPics 
 Turn your picture into Desmos graphs.
 
 ## Special Thanks to
@@ -18,6 +18,7 @@ Please check https://gooday2die.net/DesmosPics or http://us.gooday2die.net/Desmo
 - `/frontend/` : All elements for frontend web page.
 
 ## Installation
+### A. Native
 1. Simply put  `/frontend` directory into your Apache directory
 2. `sudo apt install git python3-dev python3-pip build-essential libagg-dev libpotrace-dev pkg-config`
 3. If you do not have PHP and CURL PHP not installed in your system, install them.
@@ -26,6 +27,24 @@ Please check https://gooday2die.net/DesmosPics or http://us.gooday2die.net/Desmo
 - 1. `backend.py` at line 155. 
 - 2. `index.php` at line 136
 6. `python3 backend.py`
+
+### B. Docker
+![enter image description here](https://img.shields.io/docker/pulls/isukim/desmos_pic)
+
+DesmosPics supports Docker. You can simply pull the image by
+```
+docker pull isukim/desmos_pics
+```
+Then execute the image using
+```
+docker run -d -p 8080:80 isukim/desmos_pics 
+```
+This will make the container run web server on port 8080. Also, if you would like to use API as well, use `5001` for the container's  API port.
+> For example, if you would like to use `8080` in local host for the web server and `8081` for the API server, use following command:
+> ```
+> docker run -d -p 8080:80 -p 8081:5001 isukim/desmos_pics
+> ```
+
 
 ## Limits
 - When the picture needs many functions to be rendered, Desmos API needs very much time to render graphs.
